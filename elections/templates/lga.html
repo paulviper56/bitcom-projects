@@ -1,0 +1,40 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<select id="dataSelect" class="form-select" aria-label="Default select example">
+    <option selected>Open this select menu</option>
+    {% for lga_name in lga_results.keys %}
+    <option value="{{lga_name}}">{{lga_name}}</option>
+    {% endfor %}
+  </select>
+
+<h2> Selected Content</h2>
+<div id="displayContent"></div>
+<script>
+    const data = {{ lga_results|safe}} ;
+    document.getElementById('dataSelect').addEventListener('change', function() {
+        const selectedId = this.value;
+        const displayDiv = document.getElementById('displayContent');
+        displayDiv.innerHTML = ""
+
+        if (data[selectedId]) {
+            data[selectedId].forEach(item => {
+                displayDiv.innerHTML += ` <p> party: ${item.party_abbreviation}, party-score: ${item.party_score} </p>`;
+            });
+        }
+    });
+    console.log(data)
+</script>
+
+
+
+
+
+
+
+
+
+
+{% endblock content %}

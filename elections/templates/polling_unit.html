@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<h3 style="text-align: center; color:blue;">Results of Polling-Units by Various Political Parties</h3>
+
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">polling-unit id</th>
+        <th scope="col">Party Abbreviation</th>
+        <th scope="col">Party Score</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      {% for polling_unit in polling_details %}
+      <tr>
+        
+        
+        <th scope="row">{{polling_unit.polling_unit_id}}</th>
+        <td>{{polling_unit.party_abbreviation}}</td>
+        <td>{{polling_unit.party_score}}</td>
+      
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock content %}

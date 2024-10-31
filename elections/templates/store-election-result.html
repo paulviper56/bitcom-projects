@@ -1,0 +1,25 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<form method="POST" action="{% url 'store_election_result' %}">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit"> Submit Result </button>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock content %}
